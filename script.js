@@ -1,4 +1,4 @@
-// ensures that the dom loads before my code
+// ensures that the dom loads before the code
 
 $(function () {
   // variable declorations
@@ -17,15 +17,12 @@ $(function () {
   checkTime();
 
   function checkTime() {
-    // iterates through each hour row
+    // iterates through each hour row, converting the hourEl elements to jquery objects and integers, wich can be compared to the actual time from dayJs.
     hourEl.each(function () {
-      // converts the current hourEl into a jquery object, wich jquery methods can be used upon
       var currentHourEl = $(this);
-      // turns the id in each hourEl into an integer, wich can be compared to the dayjs hour variable
       var currentHour = parseInt(currentHourEl.attr("id"));
-      // removes the classes from each hour row
       currentHourEl.removeClass("past present future");
-      // assignes classes to the elements based on their time in relation to the actual time
+      // assignes classes to the hourEl elements
       if (currentHour === hour) {
         currentHourEl.addClass("present");
       } else if (currentHour < hour) {
